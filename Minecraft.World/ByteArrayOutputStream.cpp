@@ -53,9 +53,25 @@ void ByteArrayOutputStream::write(byteArray b, unsigned int offset, unsigned int
 {
 	assert( b.length >= offset + length );
 
+	if (offset > b.length || length > b.length - offset)
+    {
+        return;
+    }
+
+    if (length > 0xFFFFFFFF - count)
+    {
+        return;
+
 	// If we will fill the buffer we need to make it bigger
 	if( count + length >=  buf.length )
-		buf.resize( max( count + length + 1, buf.length * 2 ) );
+    {
+        unsigned int newSize = (std::max)(count + length + 1, buf.length * 2);
+        if (newSize <= buf.length)
+        {
+            return;
+        }
+        buf.resize(newSize);
+    }
 
 	XMemCpy( &buf[count], &b[offset], length );
 	//std::copy( b->data+offset, b->data+offset+length, buf->data + count ); // Or this instead?
