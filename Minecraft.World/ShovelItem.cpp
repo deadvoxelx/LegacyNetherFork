@@ -3,7 +3,7 @@
 #include "net.minecraft.world.level.tile.h"
 #include "ShovelItem.h"
 
-TileArray *ShovelItem::diggables = nullptr;
+TileArray *ShovelItem::diggables = NULL;
 
 void ShovelItem::staticCtor()
 {
@@ -18,6 +18,8 @@ void ShovelItem::staticCtor()
 	diggables->data[7] = Tile::farmland;
 	diggables->data[8] = Tile::soulsand;
 	diggables->data[9] = Tile::mycel;
+	diggables->data[10] = Tile::netherSoil;
+	diggables->data[11] = Tile::lavaRock;
 }
 
 ShovelItem::ShovelItem(int id, const Tier *tier) : DiggerItem(id, 1, tier, diggables)
