@@ -90,6 +90,7 @@ public:
 		eMaterial_book,
 		eMaterial_bookshelf,
 		eMaterial_wheat,
+		eMaterial_nethanium,
 
 	}
 	eMaterial;
@@ -158,6 +159,7 @@ public:
 		static const Tier *IRON; //
 		static const Tier *DIAMOND; //
 		static const Tier *GOLD;
+		static const Tier *NETHANIUM; //
 
 	private:
 		const int level;
@@ -411,6 +413,18 @@ public:
 	static Item *horseArmorDiamond;
 	static Item *lead;
 	static Item *nameTag;
+	static Item *nethanium;
+	static Item *nethaniumSword;
+	static Item *nethaniumAxe;
+	static Item *nethaniumPickaxe;
+	static Item *nethaniumShovel;
+	static Item *nethaniumHoe;
+	static Item *hellSphere;
+	static Item *nethaniumHelmet;
+	static Item *nethaniumChestplate;
+	static Item *nethaniumLeggings;
+	static Item *nethaniumBoots;
+	static Item *relicMallet;
 
 
 	static const int shovel_iron_Id			= 256;
@@ -617,6 +631,18 @@ public:
 	static const int horseArmorDiamond_Id = 419;
 	static const int lead_Id = 420;
 	static const int nameTag_Id = 421;
+	static const int nethanium_Id = 422;
+	static const int nethaniumSword_Id = 423;
+	static const int nethaniumAxe_Id = 424;
+	static const int nethaniumPickaxe_Id = 425;
+	static const int nethaniumShovel_Id = 426;
+	static const int nethaniumHoe_Id = 427;
+	static const int hellSphere_Id = 428;
+	static const int nethaniumHelmet_Id = 429;
+	static const int nethaniumChestplate_Id = 430;
+	static const int nethaniumLeggings_Id = 431;
+	static const int nethaniumBoots_Id = 432;
+	static const int relicMallet_Id = 433;
 
 public:
 	const int id;
