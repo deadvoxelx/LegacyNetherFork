@@ -9,8 +9,8 @@ BiomeDecorator::BiomeDecorator(Biome *biome)
 	_init();
 
 	// 4J inits
-	level = nullptr;
-	random = nullptr;
+	level = NULL;
+	random = NULL;
 	xo = 0;
 	zo = 0;
 
@@ -19,7 +19,7 @@ BiomeDecorator::BiomeDecorator(Biome *biome)
 
 void BiomeDecorator::decorate(Level *level, Random *random, int xo, int zo)
 {
-	if (this->level != nullptr)
+	if (this->level != NULL)
 	{
 		app.DebugPrintf("BiomeDecorator::decorate - Already decorating!!\n");
 #ifndef _CONTENT_PACKAGE
@@ -34,8 +34,8 @@ void BiomeDecorator::decorate(Level *level, Random *random, int xo, int zo)
 
 	decorate();
 
-	this->level = nullptr;
-	this->random = nullptr;
+	this->level = NULL;
+	this->random = NULL;
 }
 
 
@@ -48,7 +48,7 @@ void BiomeDecorator::_init()
 	dirtOreFeature = new OreFeature(Tile::dirt_Id, 32);
 	gravelOreFeature = new OreFeature(Tile::gravel_Id, 32);
 	coalOreFeature = new OreFeature(Tile::coalOre_Id, 16);
-	ironOreFeature = new OreFeature(Tile::ironOre_Id, 8);
+	ironOreFeature = new OreFeature(Tile::ironOre_Id, 11);
 	goldOreFeature = new OreFeature(Tile::goldOre_Id, 8);
 	redStoneOreFeature = new OreFeature(Tile::redStoneOre_Id, 7);
 	diamondOreFeature = new OreFeature(Tile::diamondOre_Id, 7);
@@ -164,7 +164,7 @@ void BiomeDecorator::decorate()
 
 	// 4J Stu - For some reason this was created each time round in the loop
 	// I assume there is a case where deadBushCount could be 0
-	DeadBushFeature *deadBushFeature = nullptr;
+	DeadBushFeature *deadBushFeature = NULL;
 	if(deadBushCount > 0) deadBushFeature = new DeadBushFeature(Tile::deadBush_Id);
 	for (int i = 0; i < deadBushCount; i++)
 	{
@@ -174,7 +174,7 @@ void BiomeDecorator::decorate()
 		//new DeadBushFeature(Tile::deadBush_Id)->place(level, random, x, y, z);
 		deadBushFeature->place(level, random, x, y, z);
 	}
-	if(deadBushFeature != nullptr)delete deadBushFeature;
+	if(deadBushFeature != NULL)delete deadBushFeature;
 
 	for (int i = 0; i < waterlilyCount; i++)
 	{
@@ -319,7 +319,7 @@ void BiomeDecorator::decorateOres()
 	decorateDepthSpan(20, dirtOreFeature, 0, Level::genDepth);
 	decorateDepthSpan(10, gravelOreFeature, 0, Level::genDepth);
 	decorateDepthSpan(20, coalOreFeature, 0, Level::genDepth);
-	decorateDepthSpan(20, ironOreFeature, 0, Level::genDepth / 2);
+	decorateDepthSpan(20, ironOreFeature, 0, Level::genDepth);
 	decorateDepthSpan(2, goldOreFeature, 0, Level::genDepth / 4);
 	decorateDepthSpan(8, redStoneOreFeature, 0, Level::genDepth / 8);
 	decorateDepthSpan(1, diamondOreFeature, 0, Level::genDepth / 8);
