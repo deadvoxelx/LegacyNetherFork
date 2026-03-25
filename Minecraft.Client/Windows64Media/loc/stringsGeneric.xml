@@ -1,4 +1,4 @@
-﻿<root>
+<root>
 	<data name="IDS_TIPS_GAMETIP_NEWDLC">
 		<value>New Downloadable Content is available! Access it from the Minecraft Store button on the Main Menu.</value>
 	</data>	
@@ -8811,7 +8811,117 @@ All Ender Chests in a world are linked. Items placed into an Ender Chest are acc
 	<data name="IDS_TOOLTIPS_CURE">
 		<value>Cure</value>
 	</data>	
-	<data name="IDS_WINDOWS_EXIT">
-		<value>Exit Minecraft</value>
+	
+	<data name="IDS_TILE_NETHER_DIAMOND">
+		<value>Nether Diamond Ore</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHER_DIAMOND">
+		<value>A source of Diamonds in the Nether.</value>
 	</data>	
+	
+	<data name="IDS_TILE_NETHER_GOLD">
+		<value>Nether Gold Ore</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHER_GOLD">
+		<value>A source of Gold in the Nether.</value>
+	</data>	
+	
+	<data name="IDS_TILE_GOLDENCLIN">
+		<value>Goldenclin</value>
+	</data>
+	
+	<data name="IDS_DESC_GOLDENCLIN">
+		<value>A gold-colored block found in the Nether.</value>
+	</data>	
+	
+	<data name="IDS_TILE_GOLDENCLIN_BRICKS">
+		<value>Goldenclin Bricks</value>
+	</data>
+	
+	<data name="IDS_DESC_GOLDENCLIN_BRICKS">
+		<value>Obtained by smelting Goldenclin in a Furnace.</value>
+	</data>	
+	
+	<data name="IDS_ITEM_NETHANIUM">
+		<value>Nethanium</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHANIUM">
+		<value>A valuable resource found only in the Nether.</value>
+	</data>
+	
+	<data name="IDS_TILE_NETHERSOIL">
+		<value>Nether Soil</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHERSOIL">
+		<value>A type of dirt found in the Nether.</value>
+	</data>	
+	
+	<data name="IDS_TILE_NETHERLEAVES">
+		<value>Nether Leaves</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHERLEAVES">
+		<value>A type of foliage found in the Nether.</value>
+	</data>	
+	
+	<data name="IDS_TILE_LOG_NETHER">
+		<value>Nether Log</value>
+	</data>
+	
+	<data name="IDS_DESC_LOG_NETHER">
+		<value>A type of wood found in the Nether.</value>
+	</data>
+	
+	<data name="IDS_TILE_NETHER_PLANKS">
+		<value>Nether Planks</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHER_PLANKS">
+		<value>Crafted from Nether Logs.</value>
+	</data>
+	
+	<data name="IDS_TILE_NETHANIUMORE">
+		<value>Nethanium Ore</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHANIUMORE">
+		<value>An ore found in the Nether, drops Nethanium.</value>
+	</data>
+	
+	<data name="IDS_TILE_NETHANIUMBLOCK">
+		<value>Nethanium Block</value>
+	</data>
+	
+	<data name="IDS_DESC_NETHANIUMBLOCK">
+		<value>Composed of Nethanium.</value>
+	</data>
+	
+	<data name="IDS_ITEM_HELLSPHERE">
+		<value>Hell Sphere</value>
+	</data>
+	
+	<data name="IDS_DESC_HELLSPHERE">
+		<value>An explosive projectile made from Magma Cream.</value>
+	</data>
+	
+	<data name="IDS_TILE_SAPLING_NETHER">
+		<value>Nether Sapling</value>
+	</data>
+	
+	<data name="IDS_DESC_SAPLING_NETHER">
+		<value>Used to grow Nether Trees.</value>
+	</data>
+	
+	<data name="IDS_ITEM_RELICMALLET">
+		<value>Relic Mallet</value>
+	</data>
+	
+	<data name="IDS_DESC_RELICMALLET">
+		<value>A unique tool obtained from the Nether. Explodes the blocks mined.</value>
+	</data>
+	
 </root>
