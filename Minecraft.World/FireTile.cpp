@@ -24,7 +24,7 @@ FireTile::FireTile(int id) : Tile(id, Material::fire,isSolidRender())
 	burnOdds = new int[256];
 	memset( burnOdds,0,sizeof(int)*256);
 
-	icons = nullptr;
+	icons = NULL;
 
 	setTicking(true);
 }
@@ -64,7 +64,7 @@ void FireTile::setFlammable(int id, int flame, int burn)
 
 AABB *FireTile::getAABB(Level *level, int x, int y, int z)
 {
-	return nullptr;
+	return NULL;
 }
 
 bool FireTile::blocksLight()
@@ -122,6 +122,11 @@ void FireTile::tick(Level *level, int x, int y, int z, Random *random)
 	if (level->dimension->id == 1)		// 4J - was == instanceof TheEndDimension
 	{
 		if (level->getTile(x, y - 1, z) == Tile::unbreakable_Id) infiniBurn = true;
+	}
+
+	if (level->dimension->id == -1)	
+	{
+		if (level->getTile(x, y - 1, z) == Tile::netherSoil_Id) infiniBurn = true;
 	}
 
 	if (!mayPlace(level, x, y, z))
