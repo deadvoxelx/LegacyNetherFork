@@ -16,4 +16,7 @@ public:
 	virtual bool isHandEquipped();
 
 	const Tier *getTier();
+
+	virtual float getDestroySpeed(shared_ptr<ItemInstance> itemInstance, Tile *tile);
+	virtual bool mineBlock(shared_ptr<ItemInstance> itemInstance, Level *level, int tile, int x, int y, int z, shared_ptr<LivingEntity> owner);
 };
