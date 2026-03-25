@@ -16,7 +16,7 @@ class RandomLevelSource : public ChunkSource
 public:
 	static const double SNOW_CUTOFF;
 	static const double SNOW_SCALE;
-	static const bool FLOATING_ISLANDS = false;
+	static const bool FLOATING_ISLANDS = TRUE;
 	static const int CHUNK_HEIGHT = 8;
 	static const int CHUNK_WIDTH = 4;
 
@@ -47,7 +47,7 @@ private:
 	floatArray pows;
 
 public:
-	RandomLevelSource(Level *level, int64_t seed, bool generateStructures);
+	RandomLevelSource(Level *level, __int64 seed, bool generateStructures);
 	~RandomLevelSource();
 
 public:
