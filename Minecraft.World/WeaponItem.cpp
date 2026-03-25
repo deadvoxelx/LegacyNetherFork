@@ -27,10 +27,20 @@ float WeaponItem::getDestroySpeed(shared_ptr<ItemInstance> itemInstance, Tile *t
 		// swords can quickly cut web
 		return 15;
 	}
+
+	if (tile->id == Tile::gravel_Id)
+	{
+		return 1.5f;
+	}
+
+	if (tile->id == Tile::lavaRock_Id)
+	{
+		return 1.5f;
+	}
 	// this change modifies which tiles the swords can destroy in creative
 	// mode (>1 == yes)
 	Material *material = tile->material;
-	if (material == Material::plant || material == Material::replaceable_plant || material == Material::coral || material == Material::leaves || material == Material::vegetable)
+	if (material == Material::plant || material == Material::replaceable_plant || material == Material::coral || material == Material::leaves || material == Material::vegetable || material == Material::dirt)
 	{
 		return 1.5f;
 	}
