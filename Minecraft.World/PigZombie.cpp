@@ -148,7 +148,7 @@ void PigZombie::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel)
 	int count = random->nextInt(2 + playerBonusLevel);
 	for (int i = 0; i < count; i++)
 	{
-		spawnAtLocation(Item::rotten_flesh_Id, 1);
+		spawnAtLocation(Item::porkChop_cooked_Id, 2);
 	}
 	count = random->nextInt(2 + playerBonusLevel);
 	for (int i = 0; i < count; i++)
@@ -169,7 +169,7 @@ void PigZombie::dropRareDeathLoot(int rareLootLevel)
 
 int PigZombie::getDeathLoot()
 {
-	return Item::rotten_flesh_Id;
+	return Item::porkChop_cooked_Id;
 }
 
 void PigZombie::populateDefaultEquipmentSlots()
