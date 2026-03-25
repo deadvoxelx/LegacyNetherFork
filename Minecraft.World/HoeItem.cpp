@@ -12,6 +12,48 @@ HoeItem::HoeItem(int id, const Tier *tier) : Item(id)
 	setMaxDamage(tier->getUses());
 }
 
+float HoeItem::getDestroySpeed(shared_ptr<ItemInstance> itemInstance, Tile *tile)
+{
+	if (tile->id == Tile::leaves_Id)
+	{
+		return 8;
+	}
+
+	if (tile->id == Tile::netherLeaves_Id)
+	{
+		return 8;
+	}
+
+	if (tile->id == Tile::hayBlock_Id)
+	{
+		return 5;
+	}
+	
+	if (tile->id == Tile::sponge_Id)
+	{
+		return 5;
+	}
+
+	if (tile->id == Tile::vine_Id)
+	{
+		return 10;
+	}
+
+	if (tile->id == Tile::netherVine_Id)
+	{
+		return 10;
+	}
+
+	return 1.0f;
+}
+
+bool HoeItem::mineBlock(shared_ptr<ItemInstance> itemInstance, Level *level, int tile, int x, int y, int z, shared_ptr<LivingEntity> owner)
+{
+	// Don't damage weapons if the tile can be destroyed in one hit.
+	if (Tile::tiles[tile]->getDestroySpeed(level, x, y, z) != 0.0) itemInstance->hurtAndBreak(1, owner);
+	return true;
+}
+
 bool HoeItem::useOn(shared_ptr<ItemInstance> instance, shared_ptr<Player> player, Level *level, int x, int y, int z, int face, float clickX, float clickY, float clickZ, bool bTestUseOnOnly)
 {
 	if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
