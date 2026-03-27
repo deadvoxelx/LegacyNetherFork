@@ -19,6 +19,7 @@
 - **Game Info (Player list and Host Options)**: `TAB`
 - **Toggle HUD**: `F1`
 - **Toggle Debug Info**: `F3`
+- **Toggle Advanced Tooltips**: `F3` + `H`
 - **Open Debug Overlay**: `F4`
 - **Toggle Debug Console**: `F6`
 
