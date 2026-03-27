@@ -1,7 +1,15 @@
 name: Nightly Server Release
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
+  push:
+    branches:
+    - 'main'
+    paths-ignore:
+      - '.gitignore'
+      - '*.md'
+      - '.github/**'
+      - '!.github/workflows/nightly-server.yml'
 
 permissions:
   contents: write
