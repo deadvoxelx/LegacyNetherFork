@@ -544,7 +544,7 @@ ADD_ICON(12,	2,	L"nethanium_chestplate")
 ADD_ICON(12,	3,	L"nethanium_leggings")
 ADD_ICON(12,	4,	L"nethanium_boots")
 ADD_ICON(12,	5,	L"relic_mallet")			//Relic Mallet
-//ADD_ICON(12,	6,	L"unused")
+ADD_ICON(12,	6,	L"nether_bread")
 ADD_ICON(12,	7,	L"minecart_tnt")
 //ADD_ICON(12,	8,	L"unused")
 ADD_ICON(12,	9,	L"fireworks")
@@ -555,13 +555,15 @@ ADD_ICON(12,	13,	L"map_empty")
 ADD_ICON(12,	14,	L"frame")
 ADD_ICON(12,	15,	L"enchantedBook")
 
+ADD_ICON(13,	6,	L"gold_bread")
+
 ADD_ICON(14,	0,	L"skull_skeleton")
 ADD_ICON(14,	1,	L"skull_wither")
 ADD_ICON(14,	2,	L"skull_zombie")
 ADD_ICON(14,	3,	L"skull_char")
 ADD_ICON(14,	4,	L"skull_creeper")
 //ADD_ICON(14,	5,	L"unused")
-//ADD_ICON(14,	6,	L"unused")
+ADD_ICON(14,	6,	L"nethanium_bread")
 ADD_ICON_WITH_NAME(14,	7,	L"compassP0", L"compass") // 4J Added
 ADD_ICON_WITH_NAME(14,	8,	L"compassP1", L"compass") // 4J Added
 ADD_ICON_WITH_NAME(14,	9,	L"compassP2", L"compass") // 4J Added
