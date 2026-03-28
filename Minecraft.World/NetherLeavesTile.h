@@ -13,6 +13,4 @@ public:
 	virtual int getResourceCountForLootBonus(int bonusLevel, Random *random);
 	virtual int getResourceCount(Random *random);
 	virtual void spawnResources(Level *level, int x, int y, int z, int data, float odds, int playerBonusLevel);
-private:
-	int type;
 };
