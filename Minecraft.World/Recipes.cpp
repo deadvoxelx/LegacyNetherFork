@@ -581,6 +581,31 @@ Recipes::Recipes()
 		L'#', Item::wheat,
 		L'F');
 
+	addShapedRecipy(new ItemInstance(Item::netherBread, 1), //
+		L"scig",
+		L"###", //
+
+		L'#', Item::netherwart_seeds,
+		L'F');
+
+	addShapedRecipy(new ItemInstance(Item::goldBread, 1), //
+		L"ssscicig",
+		L"###", //
+		L"#X#", //
+		L"###", //
+
+		L'#', Item::goldIngot, L'X', Item::netherBread,
+		L'F');
+
+	addShapedRecipy(new ItemInstance(Item::nethaniumBread, 1), //
+		L"ssscicig",
+		L"###", //
+		L"#X#", //
+		L"###", //
+
+		L'#', Item::nethanium, L'X', Item::netherBread,
+		L'F');
+
 	// Moved bow and arrow in from weapons to avoid stacking on the group name display
 	addShapedRecipy(new ItemInstance((Item *)Item::bow, 1), //
 		L"ssscicig",
