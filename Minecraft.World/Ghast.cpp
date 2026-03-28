@@ -131,7 +131,7 @@ void Ghast::serverAiStep()
 		}
 	}
 
-	double maxDist = 64.0f;
+	double maxDist = 32.0f;
 	if (target != nullptr && target->distanceToSqr(shared_from_this()) < maxDist * maxDist) 
 	{
 		double xdd = target->x - x;
@@ -236,7 +236,7 @@ void Ghast::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel)
 
 float Ghast::getSoundVolume()
 {
-	return 0.4f;//10; 4J-PB - changing due to customer demands
+	return 0.8f;//10; 4J-PB - changing due to customer demands
 }
 
 bool Ghast::canSpawn()
