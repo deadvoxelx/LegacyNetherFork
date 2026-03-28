@@ -67,9 +67,9 @@ int LavaSlime::getDeathLoot()
 void LavaSlime::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel)
 {
 	int loot = getDeathLoot();
-	if (loot > 0 && getSize() > 1)
+	if (loot > 0)
 	{
-		int count = random->nextInt(4) - 2;
+		int count = random->nextInt(4) - 1;
 		if (playerBonusLevel > 0)
 		{
 			count += random->nextInt(playerBonusLevel + 1);
