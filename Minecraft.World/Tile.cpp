@@ -233,6 +233,8 @@ Tile *Tile::netherBricksMossy = NULL;
 Tile *Tile::nethaniumOre = NULL;
 Tile *Tile::nethaniumBlock = NULL;
 Tile *Tile::netherSapling = NULL;
+Tile *Tile::nether_furnace = NULL;
+Tile *Tile::nether_furnace_lit = NULL;
 
 DWORD Tile::tlsIdxShape = TlsAlloc();
 
@@ -475,6 +477,8 @@ void Tile::staticCtor()
 	Tile::nethaniumOre = (new OreTile(185))							->setDestroyTime(3.0f)->setExplodeable(5)->setSoundType(Tile::SOUND_STONE)->setIconName(L"nethanium_ore")->setDescriptionId(IDS_TILE_NETHANIUMORE)->setUseDescriptionId(IDS_DESC_NETHANIUMORE);
 	Tile::nethaniumBlock = (new MetalTile(186))														->setBaseItemTypeAndMaterial(Item::eBaseItemType_block,	Item::eMaterial_diamond)->setDestroyTime(5.0f)->setExplodeable(1200)->setSoundType(Tile::SOUND_METAL)->setIconName(L"nethanium_block")->setDescriptionId(IDS_TILE_NETHANIUMBLOCK)->setUseDescriptionId(IDS_DESC_NETHANIUMBLOCK);
 	Tile::netherSapling = (Bush *) (new Mushroom(187))							->setDestroyTime(0.0f)->setSoundType(Tile::SOUND_GRASS)->setIconName(L"sapling_nether")->setDescriptionId(IDS_TILE_SAPLING_NETHER)->setUseDescriptionId(IDS_DESC_SAPLING_NETHER)->disableMipmap();
+	Tile::nether_furnace = (new NetherFurnaceTile(188, false))							->setBaseItemTypeAndMaterial(Item::eBaseItemType_device,	Item::eMaterial_stone)->setDestroyTime(3.0f)->setSoundType(Tile::SOUND_STONE)->setIconName(L"nether_furnace")->setDescriptionId(IDS_TILE_FURNACE)->sendTileData()->setUseDescriptionId(IDS_DESC_FURNACE);
+	Tile::nether_furnace_lit = (new NetherFurnaceTile(189, true))							->setDestroyTime(3.0f)->setSoundType(Tile::SOUND_STONE)->setLightEmission(14 / 16.0f)->setIconName(L"nether_furnace")->setDescriptionId(IDS_TILE_FURNACE)->sendTileData()->setUseDescriptionId(IDS_DESC_FURNACE);
 	
 
 
