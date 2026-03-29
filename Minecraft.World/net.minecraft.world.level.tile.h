@@ -134,5 +134,6 @@
 #include "NetherWoodTile.h"
 #include "NetherPlanks.h"
 #include "NetherVineTile.h"
+#include "NetherFurnaceTile.h"
 
 
