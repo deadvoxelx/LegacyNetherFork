@@ -996,5 +996,9 @@ ADD_ICON(15,		11,	L"record_where are we now")
 	ADD_ICON(20,	4,	L"nethanium_ore");
 	ADD_ICON(20,	5,	L"nethanium_block");
 	ADD_ICON(20,	6,	L"sapling_nether");
+	ADD_ICON(20,	7,	L"nether_furnace_top");
+	ADD_ICON(20,	8,	L"nether_furnace_side");
+	ADD_ICON(20,	9,	L"nether_furnace_front");
+	ADD_ICON(20,	10,	L"nether_furnace_front_lit");
 	}
 }
