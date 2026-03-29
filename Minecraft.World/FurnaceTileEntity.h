@@ -2,6 +2,7 @@
 using namespace std;
 
 #include "FurnaceTile.h"
+#include "NetherFurnaceTile.h"
 #include "TileEntity.h"
 #include "WorldlyContainer.h"
 
