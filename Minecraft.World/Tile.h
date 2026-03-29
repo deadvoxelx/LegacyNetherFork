@@ -378,6 +378,8 @@ public:
 	static const int nethaniumOre_Id = 185;
 	static const int nethaniumBlock_Id = 186;
 	static const int netherSapling_Id = 187;
+	static const int nether_furnace_Id = 188;
+	static const int nether_furnace_lit_Id = 189;
 
 
 	static Tile *stone;
@@ -568,6 +570,8 @@ public:
 	static Tile *nethaniumOre;
 	static Tile *nethaniumBlock;
 	static Tile *netherSapling;
+	static Tile *nether_furnace;
+	static Tile *nether_furnace_lit;
 
 	static void staticCtor();
 
