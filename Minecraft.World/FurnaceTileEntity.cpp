@@ -236,10 +236,18 @@ void FurnaceTileEntity::tick()
 			tickCount = 0;
 		}
 
-		if (wasLit != litTime > 0)
+		if (wasLit != litTime > 0 && level->getTile(x, y, z) == Tile::furnace_Id )
 		{
 			changed = true;
 			FurnaceTile::setLit(litTime > 0, level, x, y, z);
+		}
+		else
+		{
+			if (wasLit != litTime > 0 && level->getTile(x, y, z) == Tile::nether_furnace_Id )
+			{
+				changed = true;
+				NetherFurnaceTile::setLit(litTime > 0, level, x, y, z);
+			}
 		}
 	}
 
