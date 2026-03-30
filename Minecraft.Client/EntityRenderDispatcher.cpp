@@ -82,6 +82,7 @@
 #include "ZombieRenderer.h"
 #include "BatRenderer.h"
 #include "CaveSpiderRenderer.h"
+#include "PigmanRenderer.h"
 
 double EntityRenderDispatcher::xOff = 0.0;
 double EntityRenderDispatcher::yOff = 0.0;
@@ -100,6 +101,9 @@ EntityRenderDispatcher::EntityRenderDispatcher()
 	renderers[eTYPE_SPIDER] = new SpiderRenderer();
 	renderers[eTYPE_CAVESPIDER] = new CaveSpiderRenderer();
 	renderers[eTYPE_PIG] = new PigRenderer(new PigModel(), new PigModel(0.5f), 0.7f);
+
+	renderers[eTYPE_PIGMAN] = new PigmanRenderer();
+
 	renderers[eTYPE_SHEEP] = new SheepRenderer(new SheepModel(), new SheepFurModel(), 0.7f);
 	renderers[eTYPE_COW] = new CowRenderer(new CowModel(), 0.7f);
 	renderers[eTYPE_MUSHROOMCOW] = new MushroomCowRenderer(new CowModel(), 0.7f);
@@ -138,6 +142,9 @@ EntityRenderDispatcher::EntityRenderDispatcher()
 	renderers[eTYPE_LEASHFENCEKNOT] = new LeashKnotRenderer();
 	renderers[eTYPE_ARROW] = new ArrowRenderer();
 	renderers[eTYPE_SNOWBALL] = new ItemSpriteRenderer(Item::snowBall);
+
+	renderers[eTYPE_HELLSPHERE] = new ItemSpriteRenderer(Item::hellSphere);
+
 	renderers[eTYPE_THROWNENDERPEARL] = new ItemSpriteRenderer(Item::enderPearl);
 	renderers[eTYPE_EYEOFENDERSIGNAL] = new ItemSpriteRenderer(Item::eyeOfEnder);
 	renderers[eTYPE_THROWNEGG] = new ItemSpriteRenderer(Item::egg);
