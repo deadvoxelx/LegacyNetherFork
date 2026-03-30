@@ -136,6 +136,7 @@ enum eINSTANCEOF
 							eTYPE_SHEEP				= eTYPE_ANIMAL | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | 0x2,
 							eTYPE_PIG				= eTYPE_ANIMAL | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | 0x3,
 							eTYPE_CHICKEN			= eTYPE_ANIMAL                                   | 0x4,
+							eTYPE_PIGMAN			= eTYPE_ANIMAL | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | 0x5,
 
 							eTYPE_COW				= eTYPE_ANIMAL | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | BIT_COW,
 								eTYPE_MUSHROOMCOW	= eTYPE_COW | 0x1,
@@ -216,6 +217,7 @@ enum eINSTANCEOF
 			eTYPE_THROWNENDERPEARL	= eTYPE_THROWABLE | 0x3,
 			eTYPE_THROWNPOTION		= eTYPE_THROWABLE | 0x4,
 			eTYPE_THROWNEXPBOTTLE	= eTYPE_THROWABLE | 0x5,
+			eTYPE_HELLSPHERE		= eTYPE_THROWABLE | 0x6,
 
 
 		eTYPE_HANGING_ENTITY		= eTYPE_ENTITY | BIT_HANGING_ENTITY,
@@ -395,79 +397,85 @@ public:
 		classes->push_back( SUBCLASS(eTYPE_ENEMY) );
 		classes->push_back( SUBCLASS(eTYPE_PROJECTILE) );
 
-		classes->push_back( SUBCLASS(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_LIVINGENTITY)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_MOB)->addParent(eTYPE_LIVINGENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_PATHFINDER_MOB)->addParent(eTYPE_MOB) );
-		classes->push_back( SUBCLASS(eTYPE_AGABLE_MOB)->addParent(eTYPE_PATHFINDER_MOB) );
-		classes->push_back( SUBCLASS(eTYPE_VILLAGER)->addParent(eTYPE_AGABLE_MOB) );
-		classes->push_back( SUBCLASS(eTYPE_ANIMAL)->addParent(eTYPE_AGABLE_MOB) );
-		classes->push_back( SUBCLASS(eTYPE_TAMABLE_ANIMAL	)->addParent( eTYPE_ANIMAL ) );
-		classes->push_back( SUBCLASS(eTYPE_OCELOT		)->addParent( eTYPE_TAMABLE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
-		classes->push_back( SUBCLASS(eTYPE_WOLF			)->addParent( eTYPE_TAMABLE_ANIMAL ) );
+		classes->push_back( SUBCLASS(eTYPE_ENTITY				) );
+		classes->push_back( SUBCLASS(eTYPE_LIVINGENTITY			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eTYPE_MOB					)->addParent(eTYPE_LIVINGENTITY) );
+		classes->push_back( SUBCLASS(eTYPE_PATHFINDER_MOB		)->addParent(eTYPE_MOB) );
+		classes->push_back( SUBCLASS(eTYPE_AGABLE_MOB			)->addParent(eTYPE_PATHFINDER_MOB) );
+		classes->push_back( SUBCLASS(eTYPE_VILLAGER				)->addParent(eTYPE_AGABLE_MOB) );
+		classes->push_back( SUBCLASS(eTYPE_ANIMAL				)->addParent(eTYPE_AGABLE_MOB) );
+		classes->push_back( SUBCLASS(eTYPE_TAMABLE_ANIMAL		)->addParent( eTYPE_ANIMAL ) );
+		classes->push_back( SUBCLASS(eTYPE_OCELOT				)->addParent( eTYPE_TAMABLE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
+		classes->push_back( SUBCLASS(eTYPE_WOLF					)->addParent( eTYPE_TAMABLE_ANIMAL ) );
 		classes->push_back( SUBCLASS(eTYPE_HORSE				)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
 		classes->push_back( SUBCLASS(eTYPE_SHEEP				)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
-		classes->push_back( SUBCLASS(eTYPE_PIG				)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK  ) );
-		classes->push_back( SUBCLASS(eTYPE_CHICKEN			)->addParent( eTYPE_ANIMAL  ) );
-		classes->push_back( SUBCLASS(eTYPE_COW				)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
-		classes->push_back( SUBCLASS(eTYPE_MUSHROOMCOW	)->addParent( eTYPE_COW ) );
-		classes->push_back( SUBCLASS(eTYPE_WATERANIMAL	)->addParent(eTYPE_PATHFINDER_MOB) );
-		classes->push_back( SUBCLASS(eTYPE_SQUID		)->addParent( eTYPE_WATERANIMAL ) );
-		classes->push_back( SUBCLASS(eTYPE_GOLEM			)->addParent( eTYPE_PATHFINDER_MOB ) );
-		classes->push_back( SUBCLASS(eTYPE_SNOWMAN		)->addParent( eTYPE_GOLEM)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
-		classes->push_back( SUBCLASS(eTYPE_VILLAGERGOLEM	)->addParent( eTYPE_GOLEM  ) );
-		classes->push_back( SUBCLASS(eTYPE_MONSTER     )->addParent(	eTYPE_ENEMY)->addParent(eTYPE_PATHFINDER_MOB ) );
-		classes->push_back( SUBCLASS(eTYPE_SPIDER			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG  ) );
-		classes->push_back( SUBCLASS(eTYPE_CAVESPIDER	)->addParent( eTYPE_SPIDER  ) );
-		classes->push_back( SUBCLASS(eTYPE_ZOMBIE			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_PIGZOMBIE		)->addParent( eTYPE_ZOMBIE ) );
-		classes->push_back( SUBCLASS(eTYPE_CREEPER		)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_GIANT			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_SKELETON		)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_ENDERMAN		)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_SILVERFISH	)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_BLAZE			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_WITCH			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_WITHERBOSS	)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_AMBIENT		)->addParent( eTYPE_MOB ) );
-		classes->push_back( SUBCLASS(eTYPE_BAT		)->addParent( eTYPE_AMBIENT )->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
-		classes->push_back( SUBCLASS(eTYPE_FLYING_MOB	)->addParent( eTYPE_MOB ) );
-		classes->push_back( SUBCLASS(eTYPE_GHAST		)->addParent( eTYPE_FLYING_MOB )->addParent(eTYPE_VALID_IN_SPAWNER_FLAG)->addParent(eTYPE_ENEMY ) );
+		classes->push_back( SUBCLASS(eTYPE_PIG					)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK  ) );
+
+		classes->push_back( SUBCLASS(eTYPE_PIGMAN				)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK  ) );
+
+		classes->push_back( SUBCLASS(eTYPE_CHICKEN				)->addParent( eTYPE_ANIMAL  ) );
+		classes->push_back( SUBCLASS(eTYPE_COW					)->addParent( eTYPE_ANIMAL)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
+		classes->push_back( SUBCLASS(eTYPE_MUSHROOMCOW			)->addParent( eTYPE_COW ) );
+		classes->push_back( SUBCLASS(eTYPE_WATERANIMAL			)->addParent(eTYPE_PATHFINDER_MOB) );
+		classes->push_back( SUBCLASS(eTYPE_SQUID				)->addParent( eTYPE_WATERANIMAL ) );
+		classes->push_back( SUBCLASS(eTYPE_GOLEM				)->addParent( eTYPE_PATHFINDER_MOB ) );
+		classes->push_back( SUBCLASS(eTYPE_SNOWMAN				)->addParent( eTYPE_GOLEM)->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK ) );
+		classes->push_back( SUBCLASS(eTYPE_VILLAGERGOLEM		)->addParent( eTYPE_GOLEM  ) );
+		classes->push_back( SUBCLASS(eTYPE_MONSTER				)->addParent(	eTYPE_ENEMY)->addParent(eTYPE_PATHFINDER_MOB ) );
+		classes->push_back( SUBCLASS(eTYPE_SPIDER				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG  ) );
+		classes->push_back( SUBCLASS(eTYPE_CAVESPIDER			)->addParent( eTYPE_SPIDER  ) );
+		classes->push_back( SUBCLASS(eTYPE_ZOMBIE				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_PIGZOMBIE			)->addParent( eTYPE_ZOMBIE ) );
+		classes->push_back( SUBCLASS(eTYPE_CREEPER				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_GIANT				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_SKELETON				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_ENDERMAN				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_SILVERFISH			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_BLAZE				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_WITCH				)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_WITHERBOSS			)->addParent( eTYPE_MONSTER)->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_AMBIENT				)->addParent( eTYPE_MOB ) );
+		classes->push_back( SUBCLASS(eTYPE_BAT					)->addParent( eTYPE_AMBIENT )->addParent(eTYPE_VALID_IN_SPAWNER_FLAG ) );
+		classes->push_back( SUBCLASS(eTYPE_FLYING_MOB			)->addParent( eTYPE_MOB ) );
+		classes->push_back( SUBCLASS(eTYPE_GHAST				)->addParent( eTYPE_FLYING_MOB )->addParent(eTYPE_VALID_IN_SPAWNER_FLAG)->addParent(eTYPE_ENEMY ) );
 		classes->push_back( SUBCLASS(eTYPE_SLIME				)->addParent( eTYPE_MOB )->addParent(eTYPE_VALID_IN_SPAWNER_FLAG)->addParent(eTYPE_ENEMY ) );
-		classes->push_back( SUBCLASS(eTYPE_LAVASLIME		)->addParent( eTYPE_SLIME ) );
-		classes->push_back( SUBCLASS(eTYPE_ENDERDRAGON	)->addParent( eTYPE_MOB ) );
-		classes->push_back( SUBCLASS(eTYPE_PLAYER			)->addParent( eTYPE_LIVINGENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_SERVERPLAYER	)->addParent( eTYPE_PLAYER ) );
-		classes->push_back( SUBCLASS(eTYPE_REMOTEPLAYER	)->addParent( eTYPE_PLAYER ) );
-		classes->push_back( SUBCLASS(eTYPE_LOCALPLAYER	)->addParent( eTYPE_PLAYER ) );
-		classes->push_back( SUBCLASS(eTYPE_MINECART					)->addParent( eTYPE_ENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_MINECART_RIDEABLE     )->addParent( eTYPE_MINECART ) );
-		classes->push_back( SUBCLASS(eTYPE_MINECART_SPAWNER      )->addParent( eTYPE_MINECART ) );
-		classes->push_back( SUBCLASS(eTYPE_MINECART_FURNACE      )->addParent( eTYPE_MINECART ) );
+		classes->push_back( SUBCLASS(eTYPE_LAVASLIME			)->addParent( eTYPE_SLIME ) );
+		classes->push_back( SUBCLASS(eTYPE_ENDERDRAGON			)->addParent( eTYPE_MOB ) );
+		classes->push_back( SUBCLASS(eTYPE_PLAYER				)->addParent( eTYPE_LIVINGENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_SERVERPLAYER			)->addParent( eTYPE_PLAYER ) );
+		classes->push_back( SUBCLASS(eTYPE_REMOTEPLAYER			)->addParent( eTYPE_PLAYER ) );
+		classes->push_back( SUBCLASS(eTYPE_LOCALPLAYER			)->addParent( eTYPE_PLAYER ) );
+		classes->push_back( SUBCLASS(eTYPE_MINECART				)->addParent( eTYPE_ENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_MINECART_RIDEABLE    )->addParent( eTYPE_MINECART ) );
+		classes->push_back( SUBCLASS(eTYPE_MINECART_SPAWNER     )->addParent( eTYPE_MINECART ) );
+		classes->push_back( SUBCLASS(eTYPE_MINECART_FURNACE     )->addParent( eTYPE_MINECART ) );
 		classes->push_back( SUBCLASS(eTYPE_MINECART_TNT			)->addParent( eTYPE_MINECART ) );
 		classes->push_back( SUBCLASS(eTYPE_MINECART_CONTAINER	)->addParent( eTYPE_MINECART ) );
-		classes->push_back( SUBCLASS(eTYPE_MINECART_CHEST	)->addParent( eTYPE_MINECART_CONTAINER ) );
-		classes->push_back( SUBCLASS(eTYPE_MINECART_HOPPER	)->addParent( eTYPE_MINECART_CONTAINER ) );
+		classes->push_back( SUBCLASS(eTYPE_MINECART_CHEST		)->addParent( eTYPE_MINECART_CONTAINER ) );
+		classes->push_back( SUBCLASS(eTYPE_MINECART_HOPPER		)->addParent( eTYPE_MINECART_CONTAINER ) );
 		classes->push_back( SUBCLASS(eTYPE_FIREBALL				)->addParent( eTYPE_ENTITY)->addParent(eTYPE_PROJECTILE ) );
-		classes->push_back( SUBCLASS(eTYPE_DRAGON_FIREBALL	)->addParent( eTYPE_FIREBALL ) );
-		classes->push_back( SUBCLASS(eTYPE_WITHER_SKULL      )->addParent( eTYPE_FIREBALL ) );
-		classes->push_back( SUBCLASS(eTYPE_LARGE_FIREBALL    )->addParent( eTYPE_FIREBALL ) );
-		classes->push_back( SUBCLASS(eTYPE_SMALL_FIREBALL	)->addParent( eTYPE_FIREBALL ) );
-		classes->push_back( SUBCLASS(eTYPE_THROWABLE				)->addParent( eTYPE_ENTITY)->addParent(eTYPE_PROJECTILE ) );
-		classes->push_back( SUBCLASS(eTYPE_SNOWBALL			)->addParent( eTYPE_THROWABLE ) );
+		classes->push_back( SUBCLASS(eTYPE_DRAGON_FIREBALL		)->addParent( eTYPE_FIREBALL ) );
+		classes->push_back( SUBCLASS(eTYPE_WITHER_SKULL			)->addParent( eTYPE_FIREBALL ) );
+		classes->push_back( SUBCLASS(eTYPE_LARGE_FIREBALL		)->addParent( eTYPE_FIREBALL ) );
+		classes->push_back( SUBCLASS(eTYPE_SMALL_FIREBALL		)->addParent( eTYPE_FIREBALL ) );
+		classes->push_back( SUBCLASS(eTYPE_THROWABLE			)->addParent( eTYPE_ENTITY)->addParent(eTYPE_PROJECTILE ) );
+		classes->push_back( SUBCLASS(eTYPE_SNOWBALL				)->addParent( eTYPE_THROWABLE ) );
+
+		classes->push_back( SUBCLASS(eTYPE_HELLSPHERE			)->addParent( eTYPE_THROWABLE ) );
+
 		classes->push_back( SUBCLASS(eTYPE_THROWNEGG			)->addParent( eTYPE_THROWABLE ) );
-		classes->push_back( SUBCLASS(eTYPE_THROWNENDERPEARL	)->addParent( eTYPE_THROWABLE ) );
-		classes->push_back( SUBCLASS(eTYPE_THROWNPOTION		)->addParent( eTYPE_THROWABLE ) );
-		classes->push_back( SUBCLASS(eTYPE_THROWNEXPBOTTLE	)->addParent( eTYPE_THROWABLE ) );
+		classes->push_back( SUBCLASS(eTYPE_THROWNENDERPEARL		)->addParent( eTYPE_THROWABLE ) );
+		classes->push_back( SUBCLASS(eTYPE_THROWNPOTION			)->addParent( eTYPE_THROWABLE ) );
+		classes->push_back( SUBCLASS(eTYPE_THROWNEXPBOTTLE		)->addParent( eTYPE_THROWABLE ) );
 		classes->push_back( SUBCLASS(eTYPE_HANGING_ENTITY		)->addParent( eTYPE_ENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_PAINTING			)->addParent( eTYPE_HANGING_ENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_ITEM_FRAME		)->addParent( eTYPE_HANGING_ENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_LEASHFENCEKNOT	)->addParent( eTYPE_HANGING_ENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_GLOBAL_ENTITY			)->addParent( eTYPE_ENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_PAINTING				)->addParent( eTYPE_HANGING_ENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_ITEM_FRAME			)->addParent( eTYPE_HANGING_ENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_LEASHFENCEKNOT		)->addParent( eTYPE_HANGING_ENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_GLOBAL_ENTITY		)->addParent( eTYPE_ENTITY ) );
 		classes->push_back( SUBCLASS(eTYPE_LIGHTNINGBOLT		)->addParent( eTYPE_GLOBAL_ENTITY ) );
 
 		//classes->push_back( SUBCLASS(eTYPE_OTHER_ENTITIES )->addParent( eTYPE_ENTITY ) );
-		classes->push_back( SUBCLASS(eTYPE_EXPERIENCEORB			)->addParent( eTYPE_ENTITY ) );
+		classes->push_back( SUBCLASS(eTYPE_EXPERIENCEORB		)->addParent( eTYPE_ENTITY ) );
 		classes->push_back( SUBCLASS(eTYPE_EYEOFENDERSIGNAL		)->addParent( eTYPE_ENTITY)->addParent(eTYPE_PROJECTILE ) );
 		classes->push_back( SUBCLASS(eTYPE_FIREWORKS_ROCKET		)->addParent( eTYPE_ENTITY)->addParent(eTYPE_PROJECTILE ) );
 		classes->push_back( SUBCLASS(eTYPE_FISHINGHOOK			)->addParent( eTYPE_ENTITY)->addParent(eTYPE_PROJECTILE ) );
@@ -475,44 +483,45 @@ public:
 		classes->push_back( SUBCLASS(eTYPE_BOAT					)->addParent( eTYPE_ENTITY  ) );
 		classes->push_back( SUBCLASS(eTYPE_FALLINGTILE			)->addParent( eTYPE_ENTITY  ) );
 		classes->push_back( SUBCLASS(eTYPE_ITEMENTITY			)->addParent( eTYPE_ENTITY  ) );
-		classes->push_back( SUBCLASS(eTYPE_PRIMEDTNT				)->addParent( eTYPE_ENTITY ) ); 
-		classes->push_back( SUBCLASS(eTYPE_ARROW					)->addParent( eTYPE_ENTITY )->addParent(eTYPE_PROJECTILE ) );
+		classes->push_back( SUBCLASS(eTYPE_PRIMEDTNT			)->addParent( eTYPE_ENTITY ) ); 
+		classes->push_back( SUBCLASS(eTYPE_ARROW				)->addParent( eTYPE_ENTITY )->addParent(eTYPE_PROJECTILE ) );
 		classes->push_back( SUBCLASS(eTYPE_MULTIENTITY_MOB_PART	)->addParent( eTYPE_ENTITY  ) );
-		classes->push_back( SUBCLASS(eTYPE_NETHER_SPHERE			)->addParent( eTYPE_ENTITY  ) );
-		classes->push_back( SUBCLASS(eTYPE_ENDER_CRYSTAL			)->addParent( eTYPE_ENTITY  ) );
+		classes->push_back( SUBCLASS(eTYPE_NETHER_SPHERE		)->addParent( eTYPE_ENTITY  ) );
+		classes->push_back( SUBCLASS(eTYPE_ENDER_CRYSTAL		)->addParent( eTYPE_ENTITY  ) );
 
-		classes->push_back( SUBCLASS(eType_BREAKINGITEMPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_BUBBLEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_EXPLODEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_FLAMEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_FOOTSTEPPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_HEARTPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_LAVAPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_NOTEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_NETHERPORTALPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_REDDUSTPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_SMOKEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_SNOWSHOVELPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_SPLASHPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_TAKEANIMATIONPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_TERRAINPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_WATERDROPPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_CRITPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_CRITPARTICLE2)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_HUGEEXPLOSIONPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_HUGEEXPLOSIONSEEDPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_PLAYERCLOUDPARTICLEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_SUSPENDEDPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_SUSPENDEDTOWNPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_DRIPPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_ENCHANTMENTTABLEPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_SPELLPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_DRAGONBREATHPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_ENDERPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_FIREWORKSSTARTERPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_FIREWORKSSPARKPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eType_FIREWORKSOVERLAYPARTICLE)->addParent(eTYPE_ENTITY) );
-		classes->push_back( SUBCLASS(eTYPE_TILEENTITY) );
+		classes->push_back( SUBCLASS(eType_BREAKINGITEMPARTICLE			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_BUBBLEPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_EXPLODEPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_FLAMEPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_FOOTSTEPPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_HEARTPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_LAVAPARTICLE					)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_NOTEPARTICLE					)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_NETHERPORTALPARTICLE			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_REDDUSTPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_SMOKEPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_SNOWSHOVELPARTICLE			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_SPLASHPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_TAKEANIMATIONPARTICLE		)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_TERRAINPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_WATERDROPPARTICLE			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_CRITPARTICLE					)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_CRITPARTICLE2				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_HUGEEXPLOSIONPARTICLE		)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_HUGEEXPLOSIONSEEDPARTICLE	)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_PLAYERCLOUDPARTICLEPARTICLE	)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_SUSPENDEDPARTICLE			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_SUSPENDEDTOWNPARTICLE		)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eTYPE_DRIPPARTICLE					)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eTYPE_ENCHANTMENTTABLEPARTICLE		)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eTYPE_SPELLPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eTYPE_DRAGONBREATHPARTICLE			)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_ENDERPARTICLE				)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_FIREWORKSSTARTERPARTICLE		)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_FIREWORKSSPARKPARTICLE		)->addParent(eTYPE_ENTITY) );
+		classes->push_back( SUBCLASS(eType_FIREWORKSOVERLAYPARTICLE		)->addParent(eTYPE_ENTITY) );
+
+		classes->push_back( SUBCLASS(eTYPE_TILEENTITY					) );
 		classes->push_back( SUBCLASS(eTYPE_CHESTTILEENTITY				)->addParent( eTYPE_TILEENTITY			) );
 		classes->push_back( SUBCLASS(eTYPE_MOBSPAWNERTILEENTITY			)->addParent( eTYPE_TILEENTITY			) );
 		classes->push_back( SUBCLASS(eTYPE_FURNACETILEENTITY			)->addParent( eTYPE_TILEENTITY			) );
