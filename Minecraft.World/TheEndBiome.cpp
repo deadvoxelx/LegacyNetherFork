@@ -2,7 +2,6 @@
 #include "TheEndBiome.h"
 #include "TheEndBiomeDecorator.h"
 #include "net.minecraft.world.entity.monster.h"
-#include "net.minecraft.world.level.tile.h"
 
 TheEndBiome::TheEndBiome(int id) : Biome(id)
 {
@@ -13,9 +12,8 @@ TheEndBiome::TheEndBiome(int id) : Biome(id)
 	waterFriendlies.clear();
 	ambientFriendlies.clear();
 
+	enemies.push_back(new MobSpawnerData(eTYPE_WATCHER, 7, 1, 1));
 	enemies.push_back(new MobSpawnerData(eTYPE_ENDERMAN, 10, 4, 4));
-	topMaterial = static_cast<byte>(Tile::dirt_Id);
-	material = static_cast<byte>(Tile::dirt_Id);
 
 	decorator = new TheEndBiomeDecorator(this);
 }
