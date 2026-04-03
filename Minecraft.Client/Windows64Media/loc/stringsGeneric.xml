@@ -8924,4 +8924,20 @@ All Ender Chests in a world are linked. Items placed into an Ender Chest are acc
 		<value>A unique tool obtained from the Nether. Explodes the blocks mined.</value>
 	</data>
 	
+	<data name="IDS_WATCHER">
+		<value>Watcher</value>
+	</data>	
+
+	<data name="IDS_DESC_WATCHER">
+		<value>Drops ender pearls when killed. Rerely drops ender eyes.</value>
+	</data>
+	
+	<data name="IDS_PIGMAN">
+		<value>Watcher</value>
+	</data>	
+
+	<data name="IDS_DESC_PIGMAN">
+		<value>Drops porkchops when killed. Reside in Nether houses.</value>
+	</data>
+	
 </root>
