@@ -380,6 +380,7 @@ public:
 	static const int netherSapling_Id = 187;
 	static const int nether_furnace_Id = 188;
 	static const int nether_furnace_lit_Id = 189;
+	static const int endGateway_Id = 200;
 
 
 	static Tile *stone;
@@ -572,6 +573,7 @@ public:
 	static Tile *netherSapling;
 	static Tile *nether_furnace;
 	static Tile *nether_furnace_lit;
+	static Tile *endGateway;
 
 	static void staticCtor();
 
