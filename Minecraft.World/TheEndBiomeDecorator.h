@@ -1,4 +1,5 @@
 #include "BiomeDecorator.h"
+#include "EndGatewayFeature.h"
 
 class TheEndBiomeDecorator : public BiomeDecorator
 {
@@ -17,6 +18,7 @@ public:
 protected:
 	Feature *spikeFeature;
 	Feature *endPodiumFeature;
+	EndGatewayFeature *endGatewayFeature;
 	virtual void decorate();
 
 
