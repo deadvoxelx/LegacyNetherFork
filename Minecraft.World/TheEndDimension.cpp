@@ -14,11 +14,6 @@ void TheEndDimension::init()
     hasCeiling = true;
 }
 
-ChunkSource *TheEndDimension::createRandomLevelSource() const
-{
-	return new TheEndLevelRandomLevelSource(level, level->getSeed());
-}
-
 float TheEndDimension::getTimeOfDay(int64_t time, float a) const
 {
 	return 0.0f;
@@ -78,6 +73,16 @@ bool TheEndDimension::isValidSpawn(int x, int z) const
 Pos *TheEndDimension::getSpawnPos()
 {
 	return new Pos(100, 50, 0);
+}
+
+ChunkSource *TheEndDimension::createRandomLevelSource() const
+{
+    if (level == nullptr)
+    {
+        return nullptr; // prevents crashes if init order is wrong
+    }
+
+    return new TheEndLevelRandomLevelSource(level, level->getSeed());
 }
 
 bool TheEndDimension::isFoggyAt(int x, int z)
