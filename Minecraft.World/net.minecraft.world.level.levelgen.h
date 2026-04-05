@@ -13,3 +13,5 @@
 #include "TheEndLevelRandomLevelSource.h"
 
 #include "CustomLevelSource.h"
+
+#include "TheOuterEndLevelRandomLevelSource.h"
