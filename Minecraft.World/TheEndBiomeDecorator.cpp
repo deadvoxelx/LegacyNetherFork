@@ -1,17 +1,22 @@
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include "stdafx.h"
 #include "TheEndBiomeDecorator.h"
 #include "net.minecraft.world.level.h"
 #include "net.minecraft.world.level.tile.h"
 #include "net.minecraft.world.level.levelgen.feature.h"
 #include "net.minecraft.world.entity.boss.enderdragon.h"
+#include "EndGatewayFeature.h"
 
-
+const double M_PI = 3.14159265358979323846;
 // Spike centre positions, calculated using
 // for(int i=0;i<8;i++)
 // {
 // int x=40 * Mth::cos(2*(-PI+(PI/8)*i));
 // int z=40* Mth::sin(2*(-PI+(PI/8)*i));
 // }
+
+
 
 
 TheEndBiomeDecorator::SPIKE TheEndBiomeDecorator::SpikeValA[8]=
@@ -35,6 +40,7 @@ TheEndBiomeDecorator::TheEndBiomeDecorator(Biome *biome) : BiomeDecorator(biome)
 {
 	spikeFeature = new SpikeFeature(Tile::endStone_Id);
 	endPodiumFeature = new EndPodiumFeature(Tile::endStone_Id);
+	endGatewayFeature = new EndGatewayFeature(Tile::unbreakable_Id);
 }
 
 void TheEndBiomeDecorator::decorate()
@@ -68,5 +74,20 @@ void TheEndBiomeDecorator::decorate()
 	if (xo == -16 && zo == -16)
 	{		
 		endPodiumFeature->place(level, random, 0, level->seaLevel, 0);
+	}
+
+	if (xo == 0 && zo == 0)
+	{
+		for (int i = 0; i < 20; i++)
+		{
+			
+			double angle = (2 * M_PI / 20) * i;
+
+			int gx = (int)(96 * cos(angle));
+			int gz = (int)(96 * sin(angle));
+
+
+			endGatewayFeature->place(level, random, gx, 75, gz);
+		}
 	}
 }
