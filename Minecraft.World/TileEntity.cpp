@@ -5,6 +5,7 @@
 #include "net.minecraft.world.level.tile.entity.h"
 #include "TileEntity.h"
 #include "PistonPieceEntity.h"
+#include "EndGatewayTileEntity.h"
 
 
 
@@ -26,6 +27,7 @@ void TileEntity::staticCtor()
 	TileEntity::setId(BrewingStandTileEntity::create, eTYPE_BREWINGSTANDTILEENTITY, L"Cauldron");
 	TileEntity::setId(EnchantmentTableEntity::create, eTYPE_ENCHANTMENTTABLEENTITY, L"EnchantTable");
 	TileEntity::setId(TheEndPortalTileEntity::create, eTYPE_THEENDPORTALTILEENTITY, L"Airportal");
+	TileEntity::setId(EndGatewayTileEntity::create, eTYPE_ENDGATEWAYTILEENTITY, L"Portal");
 	TileEntity::setId(CommandBlockEntity::create, eTYPE_COMMANDBLOCKTILEENTITY, L"Control");
 	TileEntity::setId(BeaconTileEntity::create, eTYPE_BEACONTILEENTITY, L"Beacon");
 	TileEntity::setId(SkullTileEntity::create,eTYPE_SKULLTILEENTITY, L"Skull");
