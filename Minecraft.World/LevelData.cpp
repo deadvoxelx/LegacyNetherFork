@@ -221,7 +221,7 @@ LevelData::LevelData(LevelSettings *levelSettings, const wstring& levelName)
 	lastPlayed = 0;
 	sizeOnDisk = 0;
 	//    this->loadedPlayerTag = nullptr;	// 4J - we don't store this anymore
-	dimension = 0;
+	dimension = 2;
 	version = 0;
 	rainTime = 0;
 	raining = false;
@@ -441,10 +441,10 @@ CompoundTag *LevelData::getLoadedPlayerTag()
 }
 
 // 4J Removed TU9 as it's never accurate due to the dimension never being set
-//int LevelData::getDimension()
-//{
-//    return dimension;
-//}
+int LevelData::getDimension()
+{
+   return dimension;
+}
 
 void LevelData::setSeed(int64_t seed)
 {
@@ -529,10 +529,10 @@ void LevelData::setLoadedPlayerTag(CompoundTag *loadedPlayerTag)
 }
 
 // 4J Remove TU9 as it's never used
-//void LevelData::setDimension(int dimension)
-//{
-//    this->dimension = dimension;
-//}
+void LevelData::setDimension(int dimension)
+{
+    this->dimension = dimension;
+}
 
 void LevelData::setSpawn(int xSpawn, int ySpawn, int zSpawn)
 {
